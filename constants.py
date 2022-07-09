@@ -1,16 +1,14 @@
 import functions
-from enum import Enum
-
-
-class NamesForIndexesOfExercise(Enum):
-    TEXT = 0
-    FUNCS = 1
 
 
 class MainConstants:
     def __init__(self):
         self.AUTHOR = 'Затолокин А.В.'
         self.GROUP = 'ст. гр. ЗКИ21-16Б '
+        self.NamesForIndexesOfExercise = {
+            'TEXT': 0,
+            'FUNCS': 1,
+        }
         self.NUMBERS_OF_EXERCISES = {
             '1': ('Заменить минимальный по модулю элемент каждого столбца нулем',
                   functions.change_min_elm),
@@ -31,5 +29,8 @@ class MainConstants:
             self.__full_text = f'{self.GROUP + self.AUTHOR}\n' \
                                f'{self.INFO_TEXT}\n'
             for key, item in self.NUMBERS_OF_EXERCISES.items():
-                self.__full_text += f'{key}. {item[0]}\n'
+                self.__full_text += f'{key}. {item[self.NamesForIndexesOfExercise["TEXT"]]}\n'
         return self.__full_text
+
+    def print_hi(self):
+        print(f'{self.full_text}')
